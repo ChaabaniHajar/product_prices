@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+        <script src="{{ url_for('static', filename='css/fontawesome/js/fontawesome.js')}}"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+        <script src="{{ url_for('static', filename='cssfontawesome/js/solid.js')}}"></script>
+
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/bootstrap.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='fontawesome/css/all.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href=" https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/fontawesome.min.css" rel="stylesheet">
+       	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="fontawesome/css/all.css" />
+	</head>
+<body>
+
+    <ul>
+      
+        <li><a class="ne" href="{{ url_for('index') }}">Acceuil</a></li>
+        <li><a class="ne" href="{{ url_for('about') }}">reviews</a></li>
+        <li><a class="ne" href="{{ url_for('qui') }}">À propos de nous </a></li>
+       
+      </ul>
+      
+      
+  </body>
+  
+  
+          
+      
+  
+      {%block body%}
+  
+      {%endblock%}
+  
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+    <div class="center">
+	<div class="col-md-3"></div>
+	<div class="col-md-6 well">
+       
+			
+		<h3  text-align=center font-family=Cambria, Cochin, Georgia, Times, 'Times New Roman', serif> what people say about us  </h3>
+		
+		<div class="col-md-4">
+			<div class="form-group">
+				<h3>Nom d'utilisateur:</h3>
+				<input type="text" id="user" class="form-control" />
+			</div>
+			<div>
+				
+				<h3>vote:</h3>
+                <br>
+				<span id="1" style="font-size:30px; cursor:pointer;"  class="fa fa-star" onmouseover="startRating(this)" startRating="starmark(this)" ></span>
+				<span id="2"  style="font-size:30px; cursor:pointer;" class="fa fa-star" onmouseover="startRating(this)" startRating="starmark(this)"></span>
+				<span id="3"  style="font-size:30px; cursor:pointer;" class="fa fa-star" onmouseover="startRating(this)" startRating="starmark(this)"></span>
+				<span id="4"  style="font-size:30px; cursor:pointer;" class="fa fa-star" onmouseover="startRating(this)" startRating="starmark(this)"></span>
+				<span id="5"  style="font-size:30px; cursor:pointer;" class="fa fa-star" onmouseover="startRating(this)" startRating="starmark(this)"></span>
+			</div>
+			<br />
+			<div class="form-group">
+				<h3>Votre commentaire:</h3>
+				<textarea id="review" class="form-control" style="resize:none; height:100px;"></textarea>
+			</div>
+            <br>
+            <br>
+			<center><button class="btn btn-primary btn-lg active" onclick="submitRate()">Submit</button></center>
+		</div>
+		<div class="col-md-6">
+			<div id="result"></div>
+		</div>
+	</div>
+    </div>
+<script>
+    var rate = 0;
+
+    function submitRate(){
+        var user=document.getElementById('user').value;
+        var review=document.getElementById('review').value;
+        if(rate != 0 && user !="" && review !=""){
+            var html="<img src='data:image/png;base64,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'>"+
+            "<h4>Nom d'utilisateur: <label class='text-primary'>" + user + "</label></h4>"
+            +"<h4>Vote: <label class='text-primary'>" + rate + "</label></h4>"
+            +"<h4>Commentaire</h4>"
+            +"<p>"+review+"</p>"
+            +"<hr style='border-top:1px solid #000;'/>";
+            document.getElementById('result').innerHTML+=html;
+            
+            document.getElementById('user').value="";
+            document.getElementById('review').value="";
+        }
+    }
+    
+    function startRating(item){
+        rate=item.id[0];
+        sessionStorage.star = rate;
+        for(var i=0;i<5;i++){
+            if(i<rate){
+                document.getElementById((i+1)).style.color="yellow";
+            }
+            else{
+                document.getElementById((i+1)).style.color="black";
+            }
+        }
+    }
+</script>	
+</body>
+</html>
+<style>
+
+.center {
+    margin-top:150px;
+    display: flex;
+    justify-content: center;
+    background-color: #EBEBEB;
+    position: relative;
+    margin-top: 90px;
+   
+  
+    }
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #2e94b9;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      li a:hover {
+        background-color:#fdffab;
+      }
+   
+      body{
+       
+    
+    }
+    .ne { 
+      font-size:20px;
+      font-family: "Trirong", serif;
+      }
+  
+</style>
